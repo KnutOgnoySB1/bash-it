@@ -303,22 +303,15 @@ else
 	_bash-it-profile-load "default"
 fi
 
-if command -v code-server > /dev/null 2>&1; then
-    echo ""
-    echo "Installing VS Code extensions..."
-    if [ -f "${BASH_IT}/extensions.txt" ]; then
-        while IFS= read -r extension || [ -n "$extension" ]; do
-            # Skip empty lines and comments
-            [[ -z "$extension" || "$extension" =~ ^# ]] && continue
-            echo "Installing $extension..."
-            code-server --install-extension "$extension" 2>/dev/null || echo "Note: Could not install $extension (may already be installed or unavailable)"
-        done < "${BASH_IT}/extensions.txt"
-        echo "VS Code extensions installation complete!"
-    fi
-fi
-
 # Ensure .bashrc sourcing is set up on macOS/BSD/Solaris
 _bash-it-install-ensure-bashrc-sourcing
+
+# Install VS Code extensions for Coder
+if command -v code-server &> /dev/null; then
+	echo ""
+	echo "Installing VS Code extensions..."
+	code-server --install-extension github.vscode-pull-request-github
+fi
 
 echo ""
 echo -e "${echo_green:-}Installation finished successfully! Enjoy bash-it!${echo_normal:-}"
