@@ -9,7 +9,7 @@ plugins aws
 completion aliases
 completion bash-it
 completion system
-compltion git
+completion git
 completion docker
 
 # aliases
