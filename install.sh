@@ -306,11 +306,11 @@ fi
 # Ensure .bashrc sourcing is set up on macOS/BSD/Solaris
 _bash-it-install-ensure-bashrc-sourcing
 
-# Install VS Code extensions for Coder
-if command -v code-server &> /dev/null; then
+# Install VS Code extensions
+if command -v code &> /dev/null; then
 	echo ""
 	echo "Installing VS Code extensions..."
-	code-server --install-extension github.vscode-pull-request-github
+	code --install-extension github.vscode-pull-request-github
 fi
 
 echo ""
